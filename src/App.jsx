@@ -1,78 +1,101 @@
-import './App.css'
-import { useState } from 'react'
+import { useRef, useState } from "react";
+import "./App.css";
 
 function App() {
 
-const [result, setResult] = useState("")
+const videoRef = useRef(null);
+const canvasRef = useRef(null);
 
-function capture(){
+const [image, setImage] = useState(null);
 
-let confidence = Math.floor(Math.random()*30)+70
 
-let risk=""
+const startCamera = async () => {
 
-if(confidence>90)
-risk="HIGH RISK"
+const stream = await navigator.mediaDevices.getUserMedia({
+video:true
+});
 
-else if(confidence>80)
-risk="MODERATE RISK"
+videoRef.current.srcObject = stream;
 
-else
-risk="LOW RISK"
+};
 
-setResult("Result: "+risk+" | "+confidence+"% confidence")
 
-}
+const capture = () => {
+
+const canvas = canvasRef.current;
+const video = videoRef.current;
+
+canvas.width = video.videoWidth;
+canvas.height = video.videoHeight;
+
+canvas.getContext("2d").drawImage(video,0,0);
+
+const img = canvas.toDataURL("image/png");
+
+setImage(img);
+
+
+// SEND TO BACKEND
+fetch("http://localhost:8080/upload",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+image:img
+
+})
+
+});
+
+};
+
 
 return (
 
 <div className="phone">
 
-<h2 className="logo">◎ NETRA-VAIDYA</h2>
+<h2 className="title">NETRA-VAIDYA</h2>
 
 
-<div className="camera">
-
-<div className="circle"></div>
-
-</div>
-
-
-<p className="title">
-
-Center the eye or patch of skin
-
-</p>
+<video
+ref={videoRef}
+autoPlay
+className="camera"
+/>
 
 
-<p className="subtitle">
-
-Hold steady for analysis
-
-</p>
+<canvas ref={canvasRef} style={{display:"none"}} />
 
 
-<button className="captureBtn" onClick={capture}></button>
+<div className="btnBox">
+
+<button onClick={startCamera} className="startBtn">
+START CAMERA
+</button>
 
 
-<p className="captureText">
-
-TAP TO CAPTURE
-
-</p>
-
-
-<p className="result">
-
-{result}
-
-</p>
-
+<button onClick={capture} className="captureBtn">
+CAPTURE
+</button>
 
 </div>
 
-)
+
+{image &&
+
+<img src={image} className="preview"/>
 
 }
 
-export default App
+</div>
+
+);
+
+}
+
+export default App;

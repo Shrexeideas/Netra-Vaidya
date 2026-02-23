@@ -1,116 +1,112 @@
-body{
+body {
 
-background:#0f172a;
+  background: #0f172a;
 
-display:flex;
+  display: flex;
 
-justify-content:center;
+  justify-content: center;
 
-align-items:center;
+  align-items: center;
 
-height:100vh;
+  height: 100vh;
 
-font-family:Arial;
+  margin: 0;
 
-}
-
-
-.phone{
-
-background:white;
-
-width:320px;
-
-padding:20px;
-
-border-radius:20px;
-
-text-align:center;
+  font-family: Arial, sans-serif;
 
 }
 
 
-.logo{
+.phone {
 
-color:teal;
+  background: white;
 
-}
+  padding: 20px;
 
+  border-radius: 20px;
 
-.camera{
+  width: 320px;
 
-background:black;
+  text-align: center;
 
-height:220px;
-
-border-radius:15px;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 
 }
 
 
-.circle{
+.title {
 
-width:150px;
+  color: teal;
 
-height:150px;
-
-border:2px dashed white;
-
-border-radius:50%;
+  margin-bottom: 10px;
 
 }
 
 
-.title{
+.camera {
 
-font-weight:bold;
+  width: 100%;
 
-}
+  border-radius: 15px;
 
-
-.subtitle{
-
-color:gray;
+  background: black;
 
 }
 
 
-.captureBtn{
+.btnBox {
 
-width:70px;
+  margin-top: 15px;
 
-height:70px;
+  display: flex;
 
-background:teal;
+  justify-content: center;
 
-border-radius:50%;
-
-border:8px solid #cfecec;
-
-cursor:pointer;
+  gap: 10px;
 
 }
 
 
-.captureText{
+.startBtn {
 
-color:teal;
+  background: black;
 
-font-weight:bold;
+  color: white;
+
+  padding: 10px 15px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  cursor: pointer;
 
 }
 
 
-.result{
+.captureBtn {
 
-margin-top:15px;
+  background: teal;
 
-font-weight:bold;
+  color: white;
+
+  padding: 10px 15px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+}
+
+
+.preview {
+
+  margin-top: 15px;
+
+  width: 100%;
+
+  border-radius: 10px;
 
 }
