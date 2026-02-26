@@ -28,4 +28,4 @@ const WireframeContainer = () => {
   )
 }
 
-export default WireframeContainer
+export default WireframeContainer;
