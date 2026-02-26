@@ -6,21 +6,17 @@ function App() {
 const videoRef = useRef(null);
 const canvasRef = useRef(null);
 
-const [image, setImage] = useState(null);
+const [result,setResult] = useState("");
 
+async function startCamera(){
 
-const startCamera = async () => {
-
-const stream = await navigator.mediaDevices.getUserMedia({
-video:true
-});
+const stream = await navigator.mediaDevices.getUserMedia({video:true});
 
 videoRef.current.srcObject = stream;
 
-};
+}
 
-
-const capture = () => {
+async function capture(){
 
 const canvas = canvasRef.current;
 const video = videoRef.current;
@@ -28,15 +24,16 @@ const video = videoRef.current;
 canvas.width = video.videoWidth;
 canvas.height = video.videoHeight;
 
-canvas.getContext("2d").drawImage(video,0,0);
+const ctx = canvas.getContext("2d");
 
-const img = canvas.toDataURL("image/png");
+ctx.drawImage(video,0,0);
 
-setImage(img);
+const imageData = canvas.toDataURL("image/png");
 
 
 // SEND TO BACKEND
-fetch("http://localhost:8080/upload",{
+
+const response = await fetch("http://localhost:8080/analyze",{
 
 method:"POST",
 
@@ -46,55 +43,46 @@ headers:{
 
 body:JSON.stringify({
 
-image:img
+image:imageData
 
 })
 
 });
 
-};
+const data = await response.json();
 
-
-return (
-
-<div className="phone">
-
-<h2 className="title">NETRA-VAIDYA</h2>
-
-
-<video
-ref={videoRef}
-autoPlay
-className="camera"
-/>
-
-
-<canvas ref={canvasRef} style={{display:"none"}} />
-
-
-<div className="btnBox">
-
-<button onClick={startCamera} className="startBtn">
-START CAMERA
-</button>
-
-
-<button onClick={capture} className="captureBtn">
-CAPTURE
-</button>
-
-</div>
-
-
-{image &&
-
-<img src={image} className="preview"/>
+setResult(data.result);
 
 }
 
+
+return(
+
+<div className="phone">
+
+<h2 className="logo">NETRA-VAIDYA</h2>
+
+<div className="cameraBox">
+
+<video ref={videoRef} autoPlay></video>
+
 </div>
 
-);
+<canvas ref={canvasRef} style={{display:"none"}}></canvas>
+
+<button className="startBtn" onClick={startCamera}>
+START CAMERA
+</button>
+
+<button className="captureBtn" onClick={capture}>
+CAPTURE
+</button>
+
+<p className="result">{result}</p>
+
+</div>
+
+)
 
 }
 
