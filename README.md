@@ -14,6 +14,3 @@ AI-powered mobile screening tool for rural healthcare.
 
 React + Vite prototype implemented.
 
-## Hackathon
-
-AWS AI for Bharat Hackathon 2026 Project
