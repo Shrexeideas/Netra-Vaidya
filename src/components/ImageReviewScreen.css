@@ -1,0 +1,110 @@
+.phone-frame {
+  width: 280px;
+  height: 500px;
+  background-color: white;
+  border: 3px solid #333;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.phone-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 10px;
+}
+
+.screen-title {
+  color: #007bff;
+  font-size: 16px;
+  font-weight: bold;
+  flex: 1;
+  text-align: left;
+}
+
+.image-preview {
+  flex: 1;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  min-height: 200px;
+}
+
+.preview-placeholder {
+  width: 80%;
+  height: 80%;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+}
+
+.review-question {
+  margin-bottom: 30px;
+}
+
+.question-text {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.question-subtitle {
+  color: #666;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.continue-button {
+  background-color: #00a86b;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.continue-button:hover {
+  background-color: #008f5a;
+}
+
+.retake-button {
+  background-color: transparent;
+  color: #00a86b;
+  border: 2px solid #00a86b;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.retake-button:hover {
+  background-color: #00a86b;
+  color: white;
+}

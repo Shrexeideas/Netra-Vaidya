@@ -1,0 +1,133 @@
+.phone-frame {
+  width: 280px;
+  height: 500px;
+  background-color: white;
+  border: 3px solid #333;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.phone-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 10px;
+}
+
+.screen-title {
+  color: #007bff;
+  font-size: 16px;
+  font-weight: bold;
+  flex: 1;
+  text-align: left;
+}
+
+.questions-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.question-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.question-number {
+  color: #007bff;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.question-text {
+  color: #333;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.answer-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.answer-button {
+  flex: 1;
+  padding: 10px 16px;
+  border: 2px solid #e0e0e0;
+  background-color: white;
+  color: #666;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.answer-button:hover {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.answer-button.selected {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.analyze-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.analyze-button {
+  width: 100%;
+  background-color: #00a86b;
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.analyze-button:hover {
+  background-color: #008f5a;
+}
+
+.progress-indicator {
+  display: flex;
+  gap: 8px;
+}
+
+.progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  transition: background-color 0.2s;
+}
+
+.progress-dot.active {
+  background-color: #00a86b;
+}
